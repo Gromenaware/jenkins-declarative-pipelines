@@ -7,12 +7,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'mvn clean'
+                git url: 'https://guillemhs@bitbucket.org/itnove/junitmaven.git'
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn package -DskipTests'
+                sh 'mvn compile -DskipTests'
             }
         }
         stage('Test') {
@@ -23,6 +23,11 @@ pipeline {
                 always {
                     junit 'target/surefire-reports/**/*.xml'
                 }
+            }
+        }
+        stage('Package') {
+            steps {
+                sh 'mvn package -DskipTests'
             }
         }
     }
