@@ -48,14 +48,16 @@ pipeline {
                     to: 'guillem@gromenware.com'
             )
         }
-        // publish html
-        publishHTML target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'target/surefire-reports/',
-                reportFiles: 'emailable-report.html',
-                reportName: 'Emailable Report'
-        ]
+        always{
+            // publish html
+            publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'target/surefire-reports/',
+                    reportFiles: 'emailable-report.html',
+                    reportName: 'Emailable Report'
+            ]
+        }
     }
 }
