@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     parameters {
         booleanParam(defaultValue: true, description: '', name: 'flag')
         // TODO: Be prepared to change this to "stringParam" once we're on a new enough core.
@@ -8,7 +8,7 @@ pipeline {
     triggers {
         cron('@daily')
     }
-    properties {
+    options {
         buildDiscarder(logRotator(numToKeepStr:'1'))
         disableConcurrentBuilds()
     }
@@ -20,5 +20,3 @@ pipeline {
         }
     }
 }
-
-
