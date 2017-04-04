@@ -11,6 +11,11 @@ pipeline {
                 git url: 'https://guillemhs@bitbucket.org/itnove/myexampleapp.git'
             }
         }
+        stage('Clean') {
+            steps {
+                sh 'killall node'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install -g cordova'
@@ -18,18 +23,13 @@ pipeline {
                 sh 'npm install -g ios-deploy'
                 sh 'npm config set prefix /usr/local'
                 sh 'npm root -g'
-                sh '/usr/local/lib/node_modules/ionic/bin/ionic serve --nobrowser --nolivereload &'
+                sh '/usr/local/lib/node_modules/ionic/bin/ionic serve --nobrowser &'
             }
         }
         stage('Test') {
             steps {
                 echo 'Tests here'
                 sh 'sleep 2m'
-            }
-        }
-        stage('Clean') {
-            steps {
-                sh 'killall node'
             }
         }
     }
