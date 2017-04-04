@@ -37,7 +37,7 @@ pipeline {
             emailext (
                     subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                     body: """SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': Check console output at ${env.BUILD_URL}""",
-                    to: 'guillem@gromenware.com'
+                    to: 'guillem@gromenaware.com'
             )
 
         }
@@ -45,7 +45,7 @@ pipeline {
             emailext (
                     subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                     body: """FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]': Check console output at ${env.BUILD_URL}""",
-                    to: 'guillem@gromenware.com'
+                    to: 'guillem@gromenaware.com'
             )
         }
         always{
