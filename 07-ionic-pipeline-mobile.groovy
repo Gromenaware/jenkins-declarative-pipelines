@@ -1,11 +1,22 @@
 pipeline {
     agent any
+    environment {
+        ENV     = '$OS'
+    }
     tools {
         maven "maven_jenkins"
         jdk "java_jenkins"
         nodejs "nodejs"
     }
     stages {
+        stage ('Deploy') {
+            when {
+                environment name: "ENV", value: "android"
+            }
+            steps {
+                echo 'Android execution'
+            }
+        }
         stage('Checkout') {
             steps {
                 git url: 'https://guillemhs@bitbucket.org/itnove/myexampleapp.git'
