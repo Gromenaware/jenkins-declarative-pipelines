@@ -6,6 +6,11 @@ pipeline {
     }
     environment {
         saucelabsCredentialId = '8b819d9d-0298-4f8f-9430-6d44e87ac7b5'
+        SAUCE_ACCESS = credentials('1e97caff-ff8e-42b9-95b0-76f1c98fcf38')
+        SAUCE_ACCESS_USR = 'selgp'
+        SAUCE_ACCESS_PSW = '8b819d9d-0298-4f8f-9430-6d44e87ac7b5'
+        SAUCE_USERNAME = 'selgp'
+        SAUCE_ACCESS_KEY = '8b819d9d-0298-4f8f-9430-6d44e87ac7b5'
     }
     stages {
         stage('Checkout') {
@@ -15,7 +20,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn -Dtest=WebDriverTest -Dbrowser=$BROWSER -Dhub=http://selgp:8b819d9d-0298-4f8f-9430-6d44e87ac7b5@ondemand.saucelabs.com:80/wd/hub test'
+                sh 'source /Users/guillemhernandezsola/.profile'
+                sauce('1e97caff-ff8e-42b9-95b0-76f1c98fcf38') {
+                    sh 'mvn -Dtest=WebDriverTest -Dbrowser=chrome -Dhub=http://selgp:8b819d9d-0298-4f8f-9430-6d44e87ac7b5@ondemand.saucelabs.com:80/wd/hub test'
+                }
             }
         }
     }
@@ -44,7 +52,6 @@ pipeline {
                           //     to still fail the build
                           [$class: 'FailedThreshold', failureThreshold: '10']],
                   tools: [[$class: 'JUnitType', pattern: 'target/surefire-reports/junitreports/**']]])
-
             saucePublisher()
         }
     }
