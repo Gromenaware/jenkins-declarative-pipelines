@@ -2,6 +2,18 @@
 
 This is the repo to play and test Jenkins Declarative Pipelines.
 
+You need the following plugins on your Jenkins 2.7+ instance:
+
+* Pipeline: Declarative Agent API
+* Build Pipeline Plugin
+* Pipeline Maven Integration Plugin
+* Pipeline: Multibranch with defaults
+* Delivery Pipeline Plugin
+* Sauce OnDemand plugin
+* HTML Publisher plugin
+* xUnit plugin
+
+
 ## 01-maven-example
 A simple maven example
 ## 02-maven-html-reports
