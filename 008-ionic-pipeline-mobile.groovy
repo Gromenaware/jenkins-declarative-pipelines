@@ -5,7 +5,6 @@ pipeline {
     }
     tools {
         maven "maven_jenkins"
-        jdk "java_jenkins"
         nodejs "nodejs"
     }
     stages {

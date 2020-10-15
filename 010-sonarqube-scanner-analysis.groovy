@@ -1,8 +1,7 @@
 pipeline {
  agent any
  tools {
-  maven "maven_354"
-  jdk "java_8"
+  maven "maven_jenkins"
  }
  stages {
   stage('SCM') {

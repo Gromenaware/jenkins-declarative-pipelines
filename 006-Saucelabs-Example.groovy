@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         maven "maven_jenkins"
-        jdk "java_jenkins"
     }
     environment {
         SAUCE_ACCESS = credentials('1e97caff-ff8e-42b9-95b0-76f1c98fcf38') //SauceLabs Credentials via Jenkins Credentials

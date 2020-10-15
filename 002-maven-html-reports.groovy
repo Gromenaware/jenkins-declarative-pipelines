@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools {
         maven "maven_jenkins"
-        jdk "java_jenkins"
     }
     stages {
         stage('Checkout') {
