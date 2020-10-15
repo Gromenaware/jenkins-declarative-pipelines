@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'git@github.com:Gromenaware/corball-test-automation-demo.git'
+                git url: 'https://github.com/Gromenaware/corball-test-automation-demo.git'
             }
         }
         stage('Build') {
