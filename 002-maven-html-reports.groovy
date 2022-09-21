@@ -1,3 +1,4 @@
+#Plugin 'Publish HTML Reports' needed
 pipeline {
     agent any
     tools {

@@ -1,3 +1,4 @@
+#Plugin 'Parametrized Scheduler' needed
 pipeline {
     agent any
     parameters {
