@@ -1,12 +1,12 @@
 pipeline {
  agent any
  tools {
-  maven "maven_jenkins"
+  maven "maven_3_8_6"
  }
  stages {
   stage('SCM') {
    steps {
-    git 'https://github.com/jenkins-docs/simple-java-maven-app.git'
+    git 'https://github.com/Gromenaware/simple-maven-spring-boot-example.git'
    }
   }
   stage('maven compile') {
@@ -14,12 +14,12 @@ pipeline {
     sh 'mvn install'
    }
   }
-  stage('SonarQube Analysis') {
-   steps {
-    withSonarQubeEnv('Sonar') {
-     sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -Dsonar.projectKey=com.itnove.example -Dsonar.projectName=com.itnove.example -Dsonar.projectVersion=${BUILD_NUMBER} -Dsonar.language=java -Dsonar.sources=src/ -Dsonar.sourcesEnconding=UTF-8 -Dsonar.java.binaries=target/classes -Dsonar.exclusions=src/test/**'
+ }
+ post {
+     always {
+            withSonarQubeEnv('Sonar') {
+                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -Dsonar.projectKey=com.itnove.pipeline.example -Dsonar.projectName=com.itnove.pipeline.example -Dsonar.projectVersion=${BUILD_NUMBER} -Dsonar.language=java -Dsonar.sources=src/ -Dsonar.sourcesEnconding=UTF-8 -Dsonar.java.binaries=target/classes -Dsonar.exclusions=src/test/**'
+        }
     }
    }
-  }
- }
 }
